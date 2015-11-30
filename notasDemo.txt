@@ -1,0 +1,119 @@
+Notas para liveCoding de Crash. 
+Codemotion 2015
+
+
+====================
+STANDALONE
+====================
+
+Estructura dirs (tree).
+  cmd base están los fuentes de todo lo que vamos a ver luego
+  crash.properties. (Las propiedades se pueden sobrescribir desde command line)
+  Los plugins estan en la carpeta lib. Podemos eliminar cosas que no queremos incluir
+
+Entramos en modo standalone. Util para probar comandos:
+- help
+- cmotionHello
+- cmotionCommands
+
+Ventaja: los comandos que hagamos los podemos ejecutar directamente, ventajas de Groovy
+
+out.println("Hola, yo voy primero" , red)
+return "Hola mundo"
+
+Vemos el cmotionCommands
+
+
+====================
+MODO ATTACH
+====================
+
+- Enseñamos el setenv.sh (variables de setenv) nos conectamos
+- Arrancamos Tomcat,
+
+  crash.sh  pid
+
+
+Vemos el runtime en el que estamos
+
+  system propls --filter java.vm.*
+  -------------------- system propls | egrep /*java*/
+  java.runtime.name                        Java(TM) SE Runtime Environment
+  java.vm.version                          23.7-b01
+  java.vm.vendor                           Oracle Corporation
+
+Vemos nuestras variables
+  system propls --filter eu.*
+  system propset eu.[Tab]
+  system propls --filter eu.*  (cuando conectemos por telnet lo volvemos a ver)
+
+
+==================== VOLVEMOS A DIAPOS ==================
+
+ENTRAMOS EN MODO SSH
+
+---------------------------------------...
+
+
+system propls --filter eu.*
+
+JMX- Manejo de gestion del servidor
+
+jmx ->
+jmx query
+
+jmx get java.lang:type=Memory
+jmx get Catalina:type=Server
+jmx get -a NonHeapMemoryUsage java.lang:type=Memory
+
+
+thread ls
+thread top
+dashboard
+
+
+Enseñamos servlet, hace demo de app web
+
+thread ls -n 'CODE*' | thread interrupt
+
+thread dump xxx
+
+thread ls| thread dump
+
+--- Interrupt un thread  (¿coña?. No demasiado recomendable)
+
+
+Log:
+
+jul ls
+jul send -m "Hola Codemotioners" -l fine net  (DEBUG)
+jul set -l fine net
+jul send -m "Hola Codemotioners" -l warning net
+
+
+Manipulamos los niveles de log de todos los loggers:
+
+jul ls | jul set -l finest
+jul ls | jul set -l info
+
+jndi --help
+jndi find | egrep
+jndi find --datasources
+
+
+---- Podemos hacer inserts, select.. de forma practicamente universal
+jdbc open java:jboss/datasources/codemotion2015
+
+jdbc tables | egrep PUBLIC
+
+jdbc table clientes
+
+jdbc execute, jdbc select
+
+jdbc close
+
+jdbc connect XXXX cadena de conexion
+
+JPA si tuvieramos
+
+-------------------------------------------------------------------------------------------

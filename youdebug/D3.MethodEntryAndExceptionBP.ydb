@@ -1,0 +1,21 @@
+vm.breakpoint("eu.jmiguel.cm2015.cmydb", 44) {
+    println "Hola! Estoy en la linea 44"
+    println "Año Nacimiento vale = ${anyoNacimiento}"
+}
+
+
+
+def bp
+vm.methodEntryBreakpoint("eu.jmiguel.cm2015.cmydb", "calculaDecada") {
+    println "Entramos en el metodo calculaDecada"
+
+    bp = vm.exceptionBreakpoint("java.lang.StringIndexOutOfBoundsException") {  e ->
+        println "Ooppps! Tenemos un problema: ${e.getMessage()}"
+        // e.dumpStackTrace(System.out)
+    }
+}
+
+vm.methodExitBreakpoint("eu.jmiguel.cm2015.cmydb", "calculaDecada") {
+    println "salimos en el metodo calculaDecada"
+    bp.delete()
+}

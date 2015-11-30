@@ -1,0 +1,16 @@
+
+
+vm.exceptionBreakpoint(java.lang.NumberFormatException) { e ->
+  println "Tenemos un problema: ${e.getMessage()}"
+  e.dumpStackTrace(System.out)
+  def prueba = metodoQueDevuelveCadena()
+  println prueba
+
+}
+
+
+def metodoQueDevuelveCadena() {
+    return "volvemos con una nueva cadena"
+}
+
+

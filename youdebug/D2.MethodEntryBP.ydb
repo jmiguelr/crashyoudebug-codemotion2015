@@ -1,0 +1,15 @@
+
+vm.breakpoint("eu.jmiguel.cm2015.cmydb", 44) {
+    println "Hola! Estoy en la linea 44"
+    println "Año Nacimiento vale = ${anyoNacimiento}"
+}
+
+vm.methodEntryBreakpoint("eu.jmiguel.cm2015.cmydb", "calculaDecada") {
+    println "Entramos en el metodo calculaDecada"
+}
+
+vm.methodExitBreakpoint("eu.jmiguel.cm2015.cmydb", "calculaDecada") {
+    println "**********\nVamos a salir del metodo calculaDecada"
+    //  vm.threads*.dumpThread()
+    println "Salimos en el metodo calculaDecada"
+}

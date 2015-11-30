@@ -1,0 +1,7 @@
+
+
+println vm.virtualMachine.name()
+println vm.virtualMachine.description()
+
+
+vm.close()

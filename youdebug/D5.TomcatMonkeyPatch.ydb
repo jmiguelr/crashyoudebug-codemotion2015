@@ -1,0 +1,10 @@
+
+vm.breakpoint("eu.jmiguel.cm2015.cmydb", 28) {
+    println "Nos llega nacimiento como [${nacimiento}]"
+
+    if(!nacimiento.isInteger()) {
+        println "Tenemos un problema.. a ver si lo solucionamos"
+        nacimiento = "2015"
+    }
+
+}

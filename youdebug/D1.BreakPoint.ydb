@@ -1,0 +1,7 @@
+println vm.virtualMachine.name()
+println vm.virtualMachine.description()
+
+vm.breakpoint("eu.jmiguel.cm2015.cmydb", 44) {
+    println "Hola! Estoy en la linea 44"
+    println "Año Nacimiento vale = ${anyoNacimiento}"
+}

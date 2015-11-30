@@ -1,0 +1,16 @@
+
+vm.breakpoint("eu.jmiguel.cm2015.cmydb", 28) {
+    String nacimientoEnRequest = request.getParameter("nacimiento")
+    if( !nacimientoEnRequest.isInteger()) {
+        println("En la IP " + request.getRemoteAddr() + " tenemos un usuario que ha puesto [${nacimientoEnRequest}]")
+    }
+    nacimiento = retornaUnIntegerComoSea( nacimientoEnRequest ) as String
+}
+
+// Podemos incluir llamadas a codigo nuestro
+//
+Integer retornaUnIntegerComoSea( String nacimientoOriginal ){
+  return nacimientoOriginal.isInteger() ?
+    nacimientoOriginal as Integer :
+    2015
+}

@@ -1,0 +1,6 @@
+println vm.virtualMachine.name()
+println vm.virtualMachine.description()
+
+vm.breakpoint("eu.jmiguel.cm2015.cmydb", 28) {
+    println "Nos llega nacimiento como [${nacimiento}]"
+}
